@@ -9,7 +9,7 @@ paths:
   /admin/api/2023-07/customers/{customer_id}/orders.json:
     get:
       summary: "Retrieves all orders belonging to a customer. The query string parameters that are available to the  Order resource are also available to this endpoint."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#orders-2020-01"
+      description: "https://shopify.dev/docs/api/admin-rest/2023-07/resources/customer#get-customers-customer-id-orders"
       parameters:
         - in: "path"
           name: "customer_id"
