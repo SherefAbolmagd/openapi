@@ -28,6 +28,7 @@ paths:
   /admin/api/2023-07/draft_orders.json:
     post:
       summary: Create a draft order
+      description: "https://shopify.dev/docs/api/admin-rest/2023-07/resources/draftorder#post-draft-orders"
       requestBody:
         content:
           application/json:
@@ -48,38 +49,6 @@ paths:
                             type: string
                           quantity:
                             type: integer
-                  required:
-                    - line_items
-                applied_discount:
-                  type: object
-                  properties:
-                    description:
-                      type: string
-                    value_type:
-                      type: string
-                    value:
-                      type: string
-                    amount:
-                      type: string
-                    title:
-                      type: string
-                  required:
-                    - description
-                    - value_type
-                    - value
-                    - amount
-                    - title
-                customer:
-                  type: object
-                  properties:
-                    id:
-                      type: integer
-                  required:
-                    - id
-                use_customer_default_address:
-                  type: boolean
-              required:
-                - draft_order
       responses:
         '200':
           description: Draft order created successfully
