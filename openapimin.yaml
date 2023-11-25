@@ -35,12 +35,14 @@ paths:
           application/json:
             schema:
               type: object 
-              required:
-                - vatiant_id
-                - quantity
               properties:
                 draft_order:
-                  line_items: []
+                  type: object
+                  line_items:
+                    type: array
+                    required:
+                      - vatiant_id
+                      - quantity
                     vatiant_id:
                       type: number
                     quantity:
