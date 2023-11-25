@@ -25,3 +25,29 @@ paths:
         200:
           description: ""
       operationId: "deprecated_202307_get_customers_param_customer_id_orders"
+  /admin/api/2023-07/draft_orders.json:
+    post:
+      summary: "Using the DraftOrder resource you can create orders in draft state using product variant line items, or custom line items. To create a product variant draft order, provide the variant_id, quantity and discount properties. To create a custom line item, provide the title, price, taxable, and quantity properties."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/orders/orders#orders-2020-01"
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object 
+              required:
+                - vatiant_id
+                - quantity
+              properties:
+                vatiant_id:
+                  type: number
+                quantity:
+                  type: number
+      tags:
+        - "draftorders"
+        - "draftorder"
+        - "order/draftorder"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202307_get_customers_param_customer_id_orders"
