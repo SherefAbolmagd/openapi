@@ -33,20 +33,18 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
+            draft_order:
               type: object 
               properties:
-                draft_order:
-                  type: object
-                  line_items:
-                    type: array
-                    required:
-                      - vatiant_id
-                      - quantity
-                    vatiant_id:
-                      type: number
-                    quantity:
-                      type: number
+                line_items:
+                  type: array
+                  0:
+                    type: object
+                    properties:
+                      vatiant_id:
+                        type: number
+                      quantity:
+                        type: number
       tags:
         - "draftorders"
         - "draftorder"
