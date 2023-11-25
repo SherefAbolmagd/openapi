@@ -39,10 +39,12 @@ paths:
                 - vatiant_id
                 - quantity
               properties:
-                vatiant_id:
-                  type: number
-                quantity:
-                  type: number
+                draft_order:
+                  line_items: []
+                    vatiant_id:
+                      type: number
+                    quantity:
+                      type: number
       tags:
         - "draftorders"
         - "draftorder"
