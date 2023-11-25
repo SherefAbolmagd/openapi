@@ -1,0 +1,344 @@
+openapi: "3.0.0"
+info:
+  title: "Shopify Admin API"
+  description: "The REST Admin API lets you build apps and other integrations for the Shopify admin."
+  version: "2020-10"
+servers:
+  - url: https://docteststore.myshopify.com
+paths:
+  /admin/api/2020-01/customers/{customer_id}/orders.json:
+    get:
+      summary: "Retrieves all orders belonging to a customer. The query string parameters that are available to the  Order resource are also available to this endpoint."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#orders-2020-01"
+      parameters:
+        - in: "path"
+          name: "customer_id"
+          required: true
+          schema:
+            type: "string"
+          description: "customer_id"
+      tags:
+        - "customers"
+        - "customer"
+        - "customers/customer"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202001_get_customers_param_customer_id_orders"
+  /admin/api/2020-04/customers.json:
+    get:
+      summary: "Retrieves a list of customers. Note: As of version 2019-10, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#index-2020-04"
+      parameters:
+        - in: "query"
+          name: "ids"
+          description: "Restrict results to customers specified by a comma-separated list of IDs."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "since_id"
+          description: "Restrict results to those after the specified ID."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_min"
+          description: "Show customers created after a specified date.(format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "created_at_max"
+          description: "Show customers created before a specified date.(format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_min"
+          description: "Show customers last updated after a specified date.(format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "updated_at_max"
+          description: "Show customers last updated before a specified date.(format: 2014-04-25T16:15:47-04:00)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "limit"
+          description: "The maximum number of results to show.\n                  (default: 50, maximum: 250)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+      tags:
+        - "customers"
+        - "customer"
+        - "customers/customer"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202004_get_customers"
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+            examples:
+              example1:
+                value:
+                  customer:
+                    first_name: "Steve"
+                    last_name: "Lastnameson"
+                    email: "steve.lastnameson@example.com"
+                    phone: "+15142546011"
+                    verified_email: true
+                    addresses:
+                      - address1: "123 Oak St"
+                        city: "Ottawa"
+                        province: "ON"
+                        phone: "555-1212"
+                        zip: "123 ABC"
+                        last_name: "Lastnameson"
+                        first_name: "Mother"
+                        country: "CA"
+                summary: "Create a new customer record"
+              example2:
+                value:
+                  customer:
+                    email: null
+                    first_name: null
+                    last_name: null
+                summary: "Creating a customer without an email or name fails and returns an error"
+              example3:
+                value:
+                  customer:
+                    first_name: "Steve"
+                    last_name: "Lastnameson"
+                    email: "steve.lastnameson@example.com"
+                    phone: "+15142546011"
+                    verified_email: true
+                    addresses:
+                      - address1: "123 Oak St"
+                        city: "Ottawa"
+                        province: "ON"
+                        phone: "555-1212"
+                        zip: "123 ABC"
+                        last_name: "Lastnameson"
+                        first_name: "Mother"
+                        country: "CA"
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Create a customer with a metafield"
+              example4:
+                value:
+                  customer:
+                    first_name: "Steve"
+                    last_name: "Lastnameson"
+                    email: "steve.lastnameson@example.com"
+                    phone: "+15142546011"
+                    verified_email: true
+                    addresses:
+                      - address1: "123 Oak St"
+                        city: "Ottawa"
+                        province: "ON"
+                        phone: "555-1212"
+                        zip: "123 ABC"
+                        last_name: "Lastnameson"
+                        first_name: "Mother"
+                        country: "CA"
+                    send_email_invite: true
+                summary: "Create a customer with send_email_invite"
+              example5:
+                value:
+                  customer:
+                    first_name: "Steve"
+                    last_name: "Lastnameson"
+                    email: "steve.lastnameson@example.com"
+                    phone: "+15142546011"
+                    verified_email: true
+                    addresses:
+                      - address1: "123 Oak St"
+                        city: "Ottawa"
+                        province: "ON"
+                        phone: "555-1212"
+                        zip: "123 ABC"
+                        last_name: "Lastnameson"
+                        first_name: "Mother"
+                        country: "CA"
+                    password: "newpass"
+                    password_confirmation: "newpass"
+                    send_email_welcome: false
+                summary: "Create a customer with password and password_confirmation and skip sending the welcome email"
+      summary: "Creates a customer."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#create-2020-04"
+      parameters: []
+      tags:
+        - "customers"
+        - "customer"
+        - "customers/customer"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202004_create_customers"
+  /admin/api/2020-04/customers/search.json:
+    get:
+      summary: "Searches for customers that match a supplied query. Note: As of version 2019-10, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#search-2020-04"
+      parameters:
+        - in: "query"
+          name: "order"
+          description: "Set the field and direction by which to order results.\n                  (default: last_order_date DESC)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "query"
+          description: "Text to search for in the shop's customer data."
+          schema: {}
+          required: false
+        - in: "query"
+          name: "limit"
+          description: "The maximum number of results to show.\n                  (default: 50, maximum: 250)"
+          schema: {}
+          required: false
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+      tags:
+        - "customers"
+        - "customer"
+        - "customers/customer"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202004_get_customers_search"
+  /admin/api/2020-04/customers/{customer_id}.json:
+    get:
+      summary: "Retrieves a single customer."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#show-2020-04"
+      parameters:
+        - in: "path"
+          name: "customer_id"
+          required: true
+          schema:
+            type: "string"
+          description: "customer_id"
+        - in: "query"
+          name: "fields"
+          description: "Show only certain fields, specified by a comma-separated list of field names."
+          schema: {}
+          required: false
+      tags:
+        - "customers"
+        - "customer"
+        - "customers/customer"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202004_get_customers_param_customer_id"
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+            examples:
+              example1:
+                value:
+                  customer:
+                    id: 207119551
+                    email: "changed@email.address.com"
+                    note: "Customer is a great guy"
+                summary: "Update details for a customer"
+              example2:
+                value:
+                  customer:
+                    id: 207119551
+                    metafields:
+                      - key: "new"
+                        value: "newvalue"
+                        value_type: "string"
+                        namespace: "global"
+                summary: "Add metafield to an existing customer"
+              example3:
+                value:
+                  customer:
+                    id: 207119551
+                    tags: "New Customer, Repeat Customer"
+                summary: "Update a customer's tags"
+              example4:
+                value:
+                  customer:
+                    id: 207119551
+                    accepts_marketing: true
+                    accepts_marketing_updated_at: "2020-11-01T16:46:41-05:00"
+                    marketing_opt_in_level: "confirmed_opt_in"
+                summary: "Update a customer's marketing opt-in state"
+      summary: "Updates a customer."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#update-2020-04"
+      parameters:
+        - in: "path"
+          name: "customer_id"
+          required: true
+          schema:
+            type: "string"
+          description: "customer_id"
+      tags:
+        - "customers"
+        - "customer"
+        - "customers/customer"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202004_update_customers_param_customer_id"
+    delete:
+      summary: "Deletes a customer. A customer can't be deleted if they have existing orders."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#destroy-2020-04"
+      parameters:
+        - in: "path"
+          name: "customer_id"
+          required: true
+          schema:
+            type: "string"
+          description: "customer_id"
+      tags:
+        - "customers"
+        - "customer"
+        - "customers/customer"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202004_delete_customers_param_customer_id"
+  /admin/api/2020-04/customers/{customer_id}/account_activation_url.json:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+            examples:
+              example1:
+                value: {}
+                summary: "Creating an account activation URL for an enabled customer fails and returns an error"
+              example2:
+                value: {}
+                summary: "Create an account activation URL for an invited or disabled customer"
+      summary: "Generate an account activation URL for a customer whose account is not yet enabled. This is useful when you've imported a large number of customers and want to send them activation emails all at once. Using this approach, you'll need to generate and send the activation emails yourself.\n            The account activation URL generated by this endpoint is for one-time use and will expire after 30 days. If you make a new POST request to this endpoint, then a new URL will be generated. The new URL will be again valid for 30 days, but the previous URL will no longer be valid."
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#account_activation_url-2020-04"
+      parameters:
+        - in: "path"
+          name: "customer_id"
+          required: true
+          schema:
+            type: "string"
+          description: "customer_id"
+      tags:
+        - "customers"
+        - "customer"
+        - "customers/customer"
+      responses:
+        200:
+          description: ""
+      operationId: "deprecated_202004_create_customers_param_customer_id_account_activation_url"
