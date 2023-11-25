@@ -28,7 +28,7 @@ paths:
   /admin/api/2023-07/draft_orders.json:
     post:
       summary: "Using the DraftOrder resource you can create orders in draft state using product variant line items, or custom line items. To create a product variant draft order, provide the variant_id, quantity and discount properties. To create a custom line item, provide the title, price, taxable, and quantity properties."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/orders/orders#orders-2020-01"
+      description: "https://shopify.dev/docs/api/admin-rest/2023-07/resources/draftorder#post-draft-orders"
       parameters: []
       requestBody:
         content:
