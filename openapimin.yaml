@@ -2,11 +2,11 @@ openapi: "3.0.0"
 info:
   title: "Shopify Admin API"
   description: "The REST Admin API lets you build apps and other integrations for the Shopify admin."
-  version: "2020-10"
+  version: "2023-07"
 servers:
   - url: https://docteststore.myshopify.com
 paths:
-  /admin/api/2020-01/customers/{customer_id}/orders.json:
+  /admin/api/2023-07/customers/{customer_id}/orders.json:
     get:
       summary: "Retrieves all orders belonging to a customer. The query string parameters that are available to the  Order resource are also available to this endpoint."
       description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#orders-2020-01"
@@ -25,10 +25,10 @@ paths:
         200:
           description: ""
       operationId: "deprecated_202001_get_customers_param_customer_id_orders"
-  /admin/api/2020-04/customers.json:
+  /admin/api/2023-07/customers.json:
     get:
       summary: "Retrieves a list of customers. Note: As of version 2019-10, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#index-2020-04"
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#index-2023-07"
       parameters:
         - in: "query"
           name: "ids"
@@ -173,7 +173,7 @@ paths:
                     send_email_welcome: false
                 summary: "Create a customer with password and password_confirmation and skip sending the welcome email"
       summary: "Creates a customer."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#create-2020-04"
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#create-2023-07"
       parameters: []
       tags:
         - "customers"
@@ -183,10 +183,10 @@ paths:
         200:
           description: ""
       operationId: "deprecated_202004_create_customers"
-  /admin/api/2020-04/customers/search.json:
+  /admin/api/2023-07/customers/search.json:
     get:
       summary: "Searches for customers that match a supplied query. Note: As of version 2019-10, this endpoint implements pagination by using links that are provided in the response header. Sending the page parameter will return an error. To learn more, see Making requests to paginated REST Admin API endpoints."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#search-2020-04"
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#search-2023-07"
       parameters:
         - in: "query"
           name: "order"
@@ -216,10 +216,10 @@ paths:
         200:
           description: ""
       operationId: "deprecated_202004_get_customers_search"
-  /admin/api/2020-04/customers/{customer_id}.json:
+  /admin/api/2023-07/customers/{customer_id}.json:
     get:
       summary: "Retrieves a single customer."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#show-2020-04"
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#show-2023-07"
       parameters:
         - in: "path"
           name: "customer_id"
@@ -278,7 +278,7 @@ paths:
                     marketing_opt_in_level: "confirmed_opt_in"
                 summary: "Update a customer's marketing opt-in state"
       summary: "Updates a customer."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#update-2020-04"
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#update-2023-07"
       parameters:
         - in: "path"
           name: "customer_id"
@@ -296,7 +296,7 @@ paths:
       operationId: "deprecated_202004_update_customers_param_customer_id"
     delete:
       summary: "Deletes a customer. A customer can't be deleted if they have existing orders."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#destroy-2020-04"
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#destroy-2023-07"
       parameters:
         - in: "path"
           name: "customer_id"
@@ -312,7 +312,7 @@ paths:
         200:
           description: ""
       operationId: "deprecated_202004_delete_customers_param_customer_id"
-  /admin/api/2020-04/customers/{customer_id}/account_activation_url.json:
+  /admin/api/2023-07/customers/{customer_id}/account_activation_url.json:
     post:
       requestBody:
         content:
@@ -326,7 +326,7 @@ paths:
                 value: {}
                 summary: "Create an account activation URL for an invited or disabled customer"
       summary: "Generate an account activation URL for a customer whose account is not yet enabled. This is useful when you've imported a large number of customers and want to send them activation emails all at once. Using this approach, you'll need to generate and send the activation emails yourself.\n            The account activation URL generated by this endpoint is for one-time use and will expire after 30 days. If you make a new POST request to this endpoint, then a new URL will be generated. The new URL will be again valid for 30 days, but the previous URL will no longer be valid."
-      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#account_activation_url-2020-04"
+      description: "https://shopify.dev/docs/admin-api/rest/reference/customers/customer#account_activation_url-2023-07"
       parameters:
         - in: "path"
           name: "customer_id"
