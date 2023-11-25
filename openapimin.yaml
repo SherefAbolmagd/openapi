@@ -27,29 +27,59 @@ paths:
       operationId: "deprecated_202307_get_customers_param_customer_id_orders"
   /admin/api/2023-07/draft_orders.json:
     post:
-      summary: "Using the DraftOrder resource you can create orders in draft state using product variant line items, or custom line items. To create a product variant draft order, provide the variant_id, quantity and discount properties. To create a custom line item, provide the title, price, taxable, and quantity properties."
-      description: "https://shopify.dev/docs/api/admin-rest/2023-07/resources/draftorder#post-draft-orders"
-      parameters: []
+      summary: Create a draft order
       requestBody:
         content:
           application/json:
-            draft_order:
-              type: object 
+            schema:
+              type: object
               properties:
-                line_items:
-                  type: array
-                  0:
-                    type: object
-                    properties:
-                      vatiant_id:
-                        type: number
-                      quantity:
-                        type: number
-      tags:
-        - "draftorders"
-        - "draftorder"
-        - "order/draftorder"
+                draft_order:
+                  type: object
+                  properties:
+                    line_items:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          title:
+                            type: string
+                          price:
+                            type: string
+                          quantity:
+                            type: integer
+                  required:
+                    - line_items
+                applied_discount:
+                  type: object
+                  properties:
+                    description:
+                      type: string
+                    value_type:
+                      type: string
+                    value:
+                      type: string
+                    amount:
+                      type: string
+                    title:
+                      type: string
+                  required:
+                    - description
+                    - value_type
+                    - value
+                    - amount
+                    - title
+                customer:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                  required:
+                    - id
+                use_customer_default_address:
+                  type: boolean
+              required:
+                - draft_order
       responses:
-        200:
-          description: ""
-      operationId: "deprecated_202307_get_customers_param_customer_id_orders"
+        '200':
+          description: Draft order created successfully
