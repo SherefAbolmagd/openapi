@@ -43,10 +43,8 @@ paths:
                       items:
                         type: object
                         properties:
-                          title:
-                            type: string
-                          price:
-                            type: string
+                          variant_id:
+                            type: integer
                           quantity:
                             type: integer
       responses:
